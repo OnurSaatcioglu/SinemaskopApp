@@ -10,12 +10,14 @@ namespace SinemaskopApp.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public int Key { get; set; }
 
         public string Name { get; set; }
 
         public float Popularity { get; set; }
 
+        [Display(Name = "Known For")]
         public string KnownFor { get; set; }
 
 #nullable enable
