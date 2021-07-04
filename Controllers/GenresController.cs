@@ -19,12 +19,15 @@ namespace SinemaskopApp.Controllers
             _context = context;
         }
 
+        #region Index
         // GET: Genres
         public async Task<IActionResult> Index()
         {
             return View(await _context.Genre.ToListAsync());
         }
+        #endregion
 
+        #region Details
         // GET: Genres/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,7 +45,9 @@ namespace SinemaskopApp.Controllers
 
             return View(genre);
         }
+        #endregion
 
+        #region Create
         // GET: Genres/Create
         public IActionResult Create()
         {
@@ -64,7 +69,9 @@ namespace SinemaskopApp.Controllers
             }
             return View(genre);
         }
+        #endregion
 
+        #region Edit
         // GET: Genres/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -115,7 +122,9 @@ namespace SinemaskopApp.Controllers
             }
             return View(genre);
         }
+        #endregion
 
+        #region Delete
         // GET: Genres/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -149,5 +158,6 @@ namespace SinemaskopApp.Controllers
         {
             return _context.Genre.Any(e => e.Id == id);
         }
+        #endregion
     }
 }

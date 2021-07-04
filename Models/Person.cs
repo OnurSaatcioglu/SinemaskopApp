@@ -21,11 +21,14 @@ namespace SinemaskopApp.Models
         public string KnownFor { get; set; }
 
 #nullable enable
+        [Display(Name = "Picture Path")]
         public string? PicturePath { get; set; }
 
+        [Display(Name = "Birth Day")]
         [DataType(DataType.Date)]
         public DateTime? BirthDay { get; set; }
 
+        [Display(Name = "Death Day")]
         [DataType(DataType.Date)]
         public DateTime? DeathDay { get; set; }
 

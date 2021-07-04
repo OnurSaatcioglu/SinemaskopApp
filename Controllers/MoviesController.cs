@@ -19,12 +19,15 @@ namespace SinemaskopApp.Controllers
             _context = context;
         }
 
+        #region Index
         // GET: Movies
         public async Task<IActionResult> Index()
         {
             return View(await _context.Movie.ToListAsync());
         }
+        #endregion
 
+        #region Details
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -42,7 +45,9 @@ namespace SinemaskopApp.Controllers
 
             return View(movie);
         }
+        #endregion
 
+        #region Create
         // GET: Movies/Create
         public IActionResult Create()
         {
@@ -64,7 +69,9 @@ namespace SinemaskopApp.Controllers
             }
             return View(movie);
         }
+        #endregion
 
+        #region Edit
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -115,7 +122,9 @@ namespace SinemaskopApp.Controllers
             }
             return View(movie);
         }
+        #endregion
 
+        #region Delete
         // GET: Movies/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -149,5 +158,6 @@ namespace SinemaskopApp.Controllers
         {
             return _context.Movie.Any(e => e.Id == id);
         }
+        #endregion
     }
 }

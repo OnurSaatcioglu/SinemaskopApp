@@ -17,6 +17,7 @@ namespace SinemaskopApp.Models
         public string Title { get; set; }
 
         [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
         public float Rating { get; set; }
