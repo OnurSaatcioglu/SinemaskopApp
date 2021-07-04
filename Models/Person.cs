@@ -14,6 +14,8 @@ namespace SinemaskopApp.Models
 
         public string Name { get; set; }
 
+        public float Popularity { get; set; }
+
 #nullable enable
         public string? PicturePath { get; set; }
 
@@ -24,7 +26,6 @@ namespace SinemaskopApp.Models
         public DateTime? DeathDay { get; set; }
 
 #nullable disable
-
 
     }
 }
