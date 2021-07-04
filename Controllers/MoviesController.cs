@@ -192,6 +192,21 @@ namespace SinemaskopApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var movie = await _context.Movie.FindAsync(id);
+
+            int realId = movie.Key;
+            var genreList = _context.GenMov.Where(t => t.MovieKey == realId);
+
+            if (genreList != null)
+            {
+                foreach (var item in genreList)
+                {
+                    _context.GenMov.Remove(item);
+                }
+            }
+
+
+
+
             _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
