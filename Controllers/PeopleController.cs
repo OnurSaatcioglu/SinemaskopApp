@@ -75,6 +75,10 @@ namespace SinemaskopApp.Controllers
                 string jsonString2 = new WebClient().DownloadString(PersonCreditsUrl);
                 dynamic creditsData = JObject.Parse(jsonString2);
 
+                if(_context.Person.Any(o => o.Key == person.Key))
+                {
+                    return View(person);
+                }
 
                 if (creditsData.cast.HasValues == true)
                 {
@@ -206,6 +210,27 @@ namespace SinemaskopApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var person = await _context.Person.FindAsync(id);
+
+            int realId = person.Key;
+            var actedList = _context.PerMovAct.Where(t => t.PersonKey == realId);
+            var directedList = _context.PerMovDir.Where(t => t.PersonKey == realId);
+
+            if (actedList != null)
+            {
+                foreach (var item in actedList)
+                {
+                    _context.PerMovAct.Remove(item);
+                }
+            }
+
+            if (directedList != null)
+            {
+                foreach (var item in directedList)
+                {
+                    _context.PerMovDir.Remove(item);
+                }
+            }
+
             _context.Person.Remove(person);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
