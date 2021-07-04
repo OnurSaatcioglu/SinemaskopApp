@@ -16,6 +16,8 @@ namespace SinemaskopApp.Models
 
         public float Popularity { get; set; }
 
+        public string KnownFor { get; set; }
+
 #nullable enable
         public string? PicturePath { get; set; }
 
