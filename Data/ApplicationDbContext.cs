@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SinemaskopApp.Models;
 
 namespace SinemaskopApp.Data
 {
@@ -12,5 +13,8 @@ namespace SinemaskopApp.Data
             : base(options)
         {
         }
+        public DbSet<SinemaskopApp.Models.Movie> Movie { get; set; }
+        public DbSet<SinemaskopApp.Models.Person> Person { get; set; }
+        public DbSet<SinemaskopApp.Models.Genre> Genre { get; set; }
     }
 }
