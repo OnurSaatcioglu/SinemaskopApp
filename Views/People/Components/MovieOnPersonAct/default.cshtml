@@ -4,7 +4,7 @@
     var last = Model.Last();
     foreach (var item in Model)
     {
-        <a asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id"><img src="@Url.Content("https://www.themoviedb.org/t/p/w130_and_h195_bestv2" + item.PosterPath)" /></a>@if (item.Equals(last) == false)
+        <a asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id"><img src="@Url.Content("https://www.themoviedb.org/t/p/w220_and_h330_bestv2" + item.PosterPath)" style="height:273px;width:180px;" /></a>@if (item.Equals(last) == false)
         {<p> </p>};
 }
 }

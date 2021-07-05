@@ -36,7 +36,11 @@ namespace SinemaskopApp.Models
         [Display(Name = "Poster Path")]
         public string? PosterPath { get; set; }
 
+        [Display(Name = "Backdrop Path")]
+        public string? BackdropPath { get; set; }
+
         public string? Description { get; set; }
+
 
 #nullable disable
 

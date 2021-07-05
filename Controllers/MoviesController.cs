@@ -63,7 +63,7 @@ namespace SinemaskopApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Key,Title,ReleaseDate,Rating,VoteCount,popularity,ImdbKey,PosterPath,Description")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Key,Title,ReleaseDate,Rating,VoteCount,popularity,ImdbKey,PosterPath,Description,BackdropPath")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,9 @@ namespace SinemaskopApp.Controllers
                 movie.Rating = data.vote_average;
                 movie.VoteCount = data.vote_count;
                 movie.popularity = data.popularity;
+                movie.BackdropPath = data.backdrop_path;
 
-                if(data.imdb_id != null)
+                if (data.imdb_id != null)
                 {
                     movie.ImdbKey = data.imdb_id;
                 }
@@ -139,7 +140,7 @@ namespace SinemaskopApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Key,Title,ReleaseDate,Rating,VoteCount,popularity,ImdbKey,PosterPath,Description")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Key,Title,ReleaseDate,Rating,VoteCount,popularity,ImdbKey,PosterPath,Description,BackdropPath")] Movie movie)
         {
             if (id != movie.Id)
             {
