@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PicturePath)" />
 
 <div>
-    <h4>Person</h4>
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -15,12 +15,6 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Key)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.KnownFor)
