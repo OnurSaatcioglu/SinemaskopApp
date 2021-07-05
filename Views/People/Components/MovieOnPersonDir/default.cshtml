@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SinemaskopApp.Models.Movie>
+
+@{
+    var last = Model.Last();
+    foreach (var item in Model)
+    {
+        <div class="col-lg-4">
+            <div>
+                <a asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id"><img src="@Url.Content("https://www.themoviedb.org/t/p/w220_and_h330_bestv2" + item.PosterPath)" style="height:228px;width:150px;" /></a>
+            </div>
+            <div>
+                <a asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+            </div>
+        </div>
+    }
+}

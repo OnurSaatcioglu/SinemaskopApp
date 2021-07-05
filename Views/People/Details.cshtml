@@ -4,55 +4,23 @@
     ViewData["Title"] = "Details";
 }
 
-<img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PicturePath)" />
+
 
 <div>
-    <h4>@Html.DisplayFor(model => model.Name)</h4>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Key)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Key)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.KnownFor)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KnownFor)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PicturePath)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PicturePath)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDay)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BirthDay)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DeathDay)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DeathDay)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Popularity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Popularity)
-        </dd>
-        <dt class="col-sm-2">
-            Movies Acted
-        </dt>
-        <dd class="col-sm-10">
-            @await Component.InvokeAsync("MovieOnPersonAct", new { person = Model.Key })
-        </dd>
-    </dl>
+    <div><img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PicturePath)" /></div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="col-lg-12"><h4>Movies Acted</h4></div>
+            <div class="row col-lg-12">@await Component.InvokeAsync("MovieOnPersonAct", new { person = Model.Key })</div>
+        </div>
+        <div class="col-lg-6">
+            <div class="col-lg-12"><h4>Movies Directed</h4></div>
+            <div class="row col-lg-12">@await Component.InvokeAsync("MovieOnPersonDir", new { person = Model.Key })</div>
+        </div>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
