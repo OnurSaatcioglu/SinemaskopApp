@@ -22,6 +22,9 @@
                 @Html.DisplayNameFor(model => model.ReleaseDate)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.PosterPath)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Rating)
             </th>
             <th>
@@ -32,9 +35,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ImdbKey)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PosterPath)
             </th>
             <th></th>
         </tr>
@@ -52,6 +52,9 @@
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
+                <img src="@Url.Content("https://www.themoviedb.org/t/p/w130_and_h195_bestv2" + item.PosterPath)" alt="@item.Title" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
@@ -63,9 +66,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ImdbKey)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PosterPath)
-            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

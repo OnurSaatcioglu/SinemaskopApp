@@ -204,9 +204,6 @@ namespace SinemaskopApp.Controllers
                 }
             }
 
-
-
-
             _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

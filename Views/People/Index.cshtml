@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.KnownFor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PicturePath)
+                Picture
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BirthDay)
@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.KnownFor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PicturePath)
+                <img src="@Url.Content("https://www.themoviedb.org/t/p/w130_and_h195_bestv2" + item.PicturePath)" alt="@item.Name" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BirthDay)
