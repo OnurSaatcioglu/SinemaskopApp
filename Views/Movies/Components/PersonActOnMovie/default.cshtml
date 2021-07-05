@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SinemaskopApp.Models.Person>
+
+@{
+    var last = Model.Last();
+    foreach (var item in Model)
+    {
+    <div class="col-lg-2">
+        <div><a asp-controller="People" asp-action="Details" asp-route-id="@item.Id"><img src="@Url.Content("https://www.themoviedb.org/t/p/w130_and_h195_bestv2" + item.PicturePath)" /></a></div>
+        <div><p>@item.Name</p></div>
+        
+    </div>
+}
+}

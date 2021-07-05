@@ -6,32 +6,31 @@
 
 
 <div>
-    <h4>@Html.DisplayFor(model => model.Title)</h4>
+    <h2>@Html.DisplayFor(model => model.Title)</h2>
     <hr />
-    <dl class="row">
+    <div class="row">
         <div class="col-lg-3">
-            <img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PosterPath)" />
+            <img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PosterPath)" style="display: block" />
         </div>
-        <div class="col-lg-9">
-            <div>
-                <div class="col-lg-9 col-md-9">
-                    <h2>@Html.DisplayNameFor(model => model.Title)</h2>
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <p><em>Ratings:</em> @Model.Rating</p>
-                </div>
-            </div>
-            <div>
+        <div class="col-lg-9" style="padding-left: 60px">
+            <div class="row">
                 <dl>
-                    <dt>Directed by</dt>
+                    <dt>Directed by </dt>
                     <dd>@await Component.InvokeAsync("PersonDirOnMovie", new { movie = Model.Key })</dd>
+                    <dt>Ratings</dt>
+                    <dd><span style="font-size:25px">@Model.Rating</span> <small>(@Model.VoteCount oy)</small></dd>
+                    <dt></dt>
+                    <dd><a href="@Url.Content("https://www.imdb.com/title/" + Model.ImdbKey)"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/863px-IMDB_Logo_2016.svg.png" style="height:19px;width:32px;" /></a></dd>
+                    <dt>Overview</dt>
+                    <dd>@Model.Description</dd>
                 </dl>
             </div>
-            <div></div>
-            <div></div>
-            
         </div>
-    </dl>
+    </div>
+    <h4>Cast</h4>
+    <div class="row">
+        @await Component.InvokeAsync("PersonActOnMovie", new { movie = Model.Key })
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
