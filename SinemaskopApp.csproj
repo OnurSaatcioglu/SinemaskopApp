@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AdminLTE" Version="2.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.7" />

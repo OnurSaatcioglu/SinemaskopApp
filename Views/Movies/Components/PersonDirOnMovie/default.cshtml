@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SinemaskopApp.Models.Person>
+
+@{
+    var last = Model.Last();
+    foreach (var item in Model)
+    {
+        <a asp-controller="People" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>@if (item.Equals(last) == false)
+        {<p> </p>};
+}
+}

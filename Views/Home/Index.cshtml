@@ -1,8 +1,25 @@
-﻿@{
+﻿@model IEnumerable<SinemaskopApp.Models.Movie>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+            {
+    <div class="col-lg-3 col-mid-4 col-sm-6 col-12">
+        
+        <a asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id">
+            <div class="card" style="margin-bottom: 30px">
+                <img class="card-image" src="@Url.Content("https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + item.PosterPath)" alt="@item.Title" />
+            </div>
+
+        </a>
+    </div>
+            }
+
 </div>

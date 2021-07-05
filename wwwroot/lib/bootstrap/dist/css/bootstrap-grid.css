@@ -55,6 +55,7 @@ html {
   margin-left: auto;
 }
 
+
 .row {
   display: -ms-flexbox;
   display: flex;
@@ -62,7 +63,10 @@ html {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+
 }
+
+
 
 .no-gutters {
   margin-right: 0;
@@ -3715,5 +3719,6 @@ html {
   .mx-xl-auto {
     margin-left: auto !important;
   }
+
 }
 /*# sourceMappingURL=bootstrap-grid.css.map */
