@@ -30,6 +30,7 @@ namespace SinemaskopApp.Controllers
         #endregion
 
         #region Details
+
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -50,6 +51,7 @@ namespace SinemaskopApp.Controllers
         #endregion
 
         #region Create
+
         // GET: Movies/Create
         public IActionResult Create()
         {
@@ -115,6 +117,7 @@ namespace SinemaskopApp.Controllers
         #endregion
 
         #region Edit
+
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -168,6 +171,7 @@ namespace SinemaskopApp.Controllers
         #endregion
 
         #region Delete
+
         // GET: Movies/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -208,11 +212,12 @@ namespace SinemaskopApp.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
         private bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.Id == id);
         }
-        #endregion
+        
     }
 }

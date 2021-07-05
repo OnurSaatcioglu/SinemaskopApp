@@ -1,0 +1,10 @@
+﻿@model IEnumerable<SinemaskopApp.Models.Movie>
+
+@{
+    var last = Model.Last();
+    foreach (var item in Model)
+    {
+        <a href="#">@item.Title</a>@if (item.Equals(last) == false)
+        {<span>, </span>};
+}
+}

@@ -46,6 +46,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Popularity)
         </dd>
+        <dt class="col-sm-2">
+            Movies Acted
+        </dt>
+        <dd class="col-sm-10">
+            @await Component.InvokeAsync("MovieOnPersonAct", new { person = Model.Key })
+        </dd>
     </dl>
 </div>
 <div>
