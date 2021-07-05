@@ -15,7 +15,7 @@
         <div class="col-lg-9" style="padding-left: 60px">
             <div class="row">
                 <dl>
-                    <dt>Directed by </dt>
+                    <dt>Directed by</dt>
                     <dd>@await Component.InvokeAsync("PersonDirOnMovie", new { movie = Model.Key })</dd>
                     <dt>Ratings</dt>
                     <dd><span style="font-size:25px">@Model.Rating</span> <small>(@Model.VoteCount oy)</small></dd>
@@ -27,6 +27,7 @@
             </div>
         </div>
     </div>
+    <hr />
     <h4>Cast</h4>
     <div class="row">
         @await Component.InvokeAsync("PersonActOnMovie", new { movie = Model.Key })

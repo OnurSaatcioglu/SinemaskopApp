@@ -20,6 +20,8 @@ namespace SinemaskopApp.Models
         [Display(Name = "Known For")]
         public string KnownFor { get; set; }
 
+        public string Biography { get; set; }
+
 #nullable enable
         [Display(Name = "Picture Path")]
         public string? PicturePath { get; set; }

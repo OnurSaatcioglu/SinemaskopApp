@@ -42,7 +42,7 @@ namespace SinemaskopApp.ViewComponents
 
             if (people.Count == 0)
             {
-                return Content("Yok");
+                return Content("N/A");
             }
 
             return View(people);

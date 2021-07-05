@@ -24,7 +24,7 @@ namespace SinemaskopApp.ViewComponents
 
             if (movieIds == null)
             {
-                return Content("Yok");
+                return Content("N/A");
             }
 
             List<Movie> movies = new List<Movie>();
@@ -42,7 +42,7 @@ namespace SinemaskopApp.ViewComponents
 
             if (movies.Count == 0)
             {
-                return Content("Yok");
+                return Content("N/A");
             }
 
             return View(movies);

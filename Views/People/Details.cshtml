@@ -9,7 +9,24 @@
 <div>
     <h2>@Html.DisplayFor(model => model.Name)</h2>
     <hr />
-    <div><img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PicturePath)" /></div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div><img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PicturePath)" style="display: block"/></div>
+        </div>
+        <div class="col-lg-9" style="padding-left: 60px">
+            <dl>
+                <dt>Biography</dt>
+                <dd><p>@Model.Biography</p></dd>
+            </dl>
+        </div>
+    </div>
+
+    
+
+
+
+
     <hr />
     <div class="row">
         <div class="col-lg-6">

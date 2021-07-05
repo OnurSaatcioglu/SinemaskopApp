@@ -110,6 +110,7 @@ namespace SinemaskopApp.Controllers
                 person.Name = data.name;
                 person.Popularity = data.popularity;
                 person.KnownFor = data.known_for_department;
+                person.Biography = data.biography;
 
                 if (data.birthday != null)
                 {
