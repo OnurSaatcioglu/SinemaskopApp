@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +17,12 @@ namespace SinemaskopApp.Controllers
     public class MoviesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<SinemaUser> _userManager;
 
-        public MoviesController(ApplicationDbContext context)
+        public MoviesController(ApplicationDbContext context, UserManager<SinemaUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         #region Index
@@ -53,6 +57,7 @@ namespace SinemaskopApp.Controllers
         #region Create
 
         // GET: Movies/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -63,6 +68,7 @@ namespace SinemaskopApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Key,Title,ReleaseDate,Rating,VoteCount,popularity,ImdbKey,PosterPath,Description,BackdropPath")] Movie movie)
         {
             if (ModelState.IsValid)
@@ -120,6 +126,8 @@ namespace SinemaskopApp.Controllers
         #region Edit
 
         // GET: Movies/Edit/5
+
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -138,6 +146,8 @@ namespace SinemaskopApp.Controllers
         // POST: Movies/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Key,Title,ReleaseDate,Rating,VoteCount,popularity,ImdbKey,PosterPath,Description,BackdropPath")] Movie movie)
@@ -171,15 +181,75 @@ namespace SinemaskopApp.Controllers
         }
         #endregion
 
-        #region Delete
-
-        // GET: Movies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [Authorize]
+        public async Task<IActionResult> Watch(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+
+            var sinemaUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            Movie movie = new Movie();
+            movie = await _context.Movie.FindAsync(id);
+
+            UseMovWat watch = new UseMovWat();
+            watch.UserKey = sinemaUser.Id;
+            watch.MovieKey = movie.Key;
+            _context.Add(watch);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Like(int id)
+        {
+
+
+            var sinemaUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            Movie movie = new Movie();
+            movie = await _context.Movie.FindAsync(id);
+
+            UseMovLik like = new UseMovLik();
+            like.UserKey = sinemaUser.Id;
+            like.MovieKey = movie.Key;
+            _context.Add(like);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Later(int id)
+        {
+
+            Movie movie = new Movie();
+            movie = await _context.Movie.FindAsync(id);
+
+            var sinemaUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            UseMovLat later = new UseMovLat();
+            later.UserKey = sinemaUser.Id;
+            later.MovieKey = movie.Key;
+
+            _context.Add(later);
+
+            await _context.SaveChangesAsync();
+
+            //return RedirectToAction("Later", "Movies");
+            return RedirectToAction(nameof(Index));
+        }
+
+        #region Delete
+
+        // GET: Movies/Delete/5
+        public async Task<IActionResult> Delete(int id)
+        {
 
             var movie = await _context.Movie
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -211,7 +281,7 @@ namespace SinemaskopApp.Controllers
 
             _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return View(movie);
         }
         #endregion
 

@@ -10,9 +10,28 @@
     <hr />
     <div class="row">
         <div class="col-lg-3">
-            <img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PosterPath)" style="display: block" />
+            <div class="row">
+                <div class="col-lg-12"><img src="@Url.Content("https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PosterPath)" style="display: block; padding-left:12px;" /></div>
+                <div class="col-lg-3">
+                    <form asp-action="Watch" asp-route-id="@Model.Id" >
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="&#10004; Watch" style="display:block" class="btn btn-success" />
+                    </form>
+                </div>
+                <div class="col-lg-2"></div>
+                    <form  asp-action="Like" asp-route-id="@Model.Id" style="margin-left:6px">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="&#128525; Like" style="display:block" class="btn btn-warning" />
+                    </form>
+                <div class="col-lg-2">
+                    <form asp-action="Later" asp-route-id="@Model.Id" >
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="&#9203; Watch Later" style="display:block" class="btn btn-info" />
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-9" style="padding-left: 60px">
+        <div class="col-lg-9" style="padding-left: 72px">
             <div class="row">
                 <dl>
                     <dt>Directed by</dt>

@@ -7,7 +7,7 @@ using SinemaskopApp.Models;
 
 namespace SinemaskopApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<SinemaUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
